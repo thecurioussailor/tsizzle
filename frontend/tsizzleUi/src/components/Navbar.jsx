@@ -4,24 +4,24 @@ export default function Navbar(){
 
     const navigate = useNavigate();
     return(
-        <div>
-            <div className='flex h-16 w-full min-h-16 z-10 justify-between font-normal'>
+        <div className="fixed top-0 w-full bg-white z-50 shadow-md">
+            <div className='flex h-16 w-full min-h-16 z-10 justify-between font-medium relative'>
                 <nav>
-                    <ul className="flex items-center ml-4 h-full space-x-4 justify-around font-sans text-xs">
-                        <li className="ml-4"><a className="hover:underline hover:text-underline-offset-8">Women</a></li>
-                        <li className="ml-4"><a className="hover:underline hover:text-underline-offset-8">Men</a></li>
-                        <li className="ml-4"><a className="hover:underline hover:text-underline-offset-8">Teen</a></li>
-                        <li className="ml-4"><a className="hover:underline hover:text-underline-offset-8">Kids</a></li>
+                    <ul className="flex items-center ml-4 h-full space-x-4 justify-around font-sans text-sm">
+                        <li className="flex items-center ml-4 h-full"><a className="hover:underline underline-offset-8">Women</a></li>
+                        <li className="flex items-center ml-4 h-full"><a className="hover:underline underline-offset-8">Men</a></li>
+                        <li className="flex items-center ml-4 h-full"><a className="hover:underline underline-offset-8">Teen</a></li>
+                        <li className="flex items-center ml-4 h-full"><a className="hover:underline underline-offset-8">Kids</a></li>
                     </ul>
                 </nav>
 
-                <div className="items-center">
-                    <a className="flex items-center h-full" onClick={() => {navigate('/')}}>
-                        <span  className="text-4xl font-normal">tsizzle</span>
+                <div className="hover:cursor-pointer items-center w-36 ml-[144px]">
+                    <a className="flex justify-center absolue text-center items-center w-full h-full" onClick={() => {navigate('/')}}>
+                        <span  className="tracking-wide text-4xl font-medium">t-Sizzle</span>
                     </a>
                 </div>
 
-                <div className="flex items-center mr-4 space-x-4 font-normal text-xs">
+                <div className="flex items-center mr-4 space-x-4 font-medium text-xs">
                     <button className="w-16 mr-4"><span>Search</span></button>
                     <button className="w-16 mr-4" onClick={() => {navigate('/signin')}}><span>My account</span></button>
                     <button className="w-16 mr-4"><span>Wishlist</span></button>
