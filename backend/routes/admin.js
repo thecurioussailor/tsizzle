@@ -1,9 +1,10 @@
 const express = require('express');
 
 const adminMiddleware = require('../middleware/admin');
-
-const { Admin } = require('../db')
+const jwt = require('jsonwebtoken');
+const { Admin, User } = require('../db')
 const { Product } = require('../db')
+const {JWT_SECRET} = require('../config')
 
 const router = express.Router();
 
@@ -11,16 +12,51 @@ router.post('/signup', async (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
 
-    await Admin.create({
-        username: username,
-        password: password
+    const findAdmin = await Admin.findOne({
+        username
     })
-
-    res.json({
-        msg: "Admin created successfully"
-    })
+    if(!findAdmin){
+        await Admin.create({
+            username: username,
+            password: password
+        })
+    
+        res.json({
+            msg: "Admin created successfully"
+        })
+    } else {
+        res.json({
+            message: "User Already exist"
+        })
+    }
+    
 
 });
+
+router.post('/signin', async (req, res) => {
+    const username = req.body.username;
+    const password = req.body.password;
+    console.log(username);
+    const admin = await Admin.findOne({
+        username,
+        password
+    });
+    console.log(admin);
+
+    if(admin){
+        const token = jwt.sign({
+            username
+        }, JWT_SECRET);
+    
+        res.json({
+            token
+        });
+    } else {
+        res.status(411).json({
+            message: "Incorrect email or password."
+        })
+    }
+})
 
 router.post('/products', adminMiddleware, async (req, res) => {
     const title = req.body.title;

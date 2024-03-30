@@ -30,15 +30,39 @@ const ProductSchema = new mongoose.Schema({
     imageLink: String,
     price: Number,
     color: String,
+    tag: String,
     size: [String]
 });
+
+const CartSchema = new mongoose.Schema({
+
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    },
+    items: [
+        {
+            product: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: 'Product'
+            },
+            quantity: Number,
+            size: String,
+            color: String,
+            price: Number
+        }
+    ],
+    totalQuantity: Number,
+    totalPrice: Number
+})
 
 const Admin = mongoose.model('Admin', AdminSchema);
 const User = mongoose.model('User', UserSchema);
 const Product = mongoose.model('Product', ProductSchema);
-
+const Cart = mongoose.model('Cart', CartSchema)
 module.exports = {
     Admin,
     User,
-    Product
+    Product,
+    Cart
 }
