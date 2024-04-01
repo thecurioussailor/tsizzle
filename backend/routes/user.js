@@ -50,5 +50,73 @@ router.post('/signin', async (req, res) => {
             message: "Incorrect email or password."
         })
     }
+});
+
+router.get('/profile', userMiddleware, async (req, res) => {
+
+    try {
+        const username = req.username;
+        const user = await User.findOne({
+            username
+        }).select('-_id -__v')
+
+        if(!user){
+            res.status(404).json({
+                message: "User not found!"
+            })
+        }
+
+        res.json({
+            user
+        });
+        
+    } catch (error) {
+        res.status(500).json({
+            msg: "Error fetching user details.",
+            error: error.message
+        })
+    }
+});
+
+router.put('/update', userMiddleware, async (req, res) =>{
+
+    try{
+        const username = req.username;
+        const updates = req.body;
+
+        const user = await User.findOne({
+            username
+        });
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        if (Object.keys(updates).length === 0) {
+            return res.status(400).json({ message: 'No updates provided' });
+        }
+
+        Object.keys(updates).forEach((key) => {
+            user[key] = updates[key];
+        });
+
+        console.log("Updated user before saving:", user);
+
+        await user.save();
+
+        const updatedUser = await User.findOne({ username }).select('-_id -__v'); // Exclude _id and __v
+        res.json({
+            message: 'User details updated successfully',
+            user: updatedUser
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            message: 'Error updating user details',
+            error: error.message
+        });
+    }
+
 })
+
+
+
 module.exports = router;

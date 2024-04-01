@@ -16,11 +16,7 @@ const UserSchema = new mongoose.Schema({
     password: String,
     firstName: String,
     lastName: String,
-    age:  Number,
-    wishlist: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Product'
-    }]
+    age:  Number
 });
 
 const ProductSchema = new mongoose.Schema({

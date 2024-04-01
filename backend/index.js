@@ -7,6 +7,7 @@ const userRouter = require("./routes/user");
 
 app.use("/admin", adminRouter);
 app.use("/user", userRouter);
+app.use("/cart", cartRouter);
 
 app.listen(3000,() =>{
     console.log("I am listening on 3000")
