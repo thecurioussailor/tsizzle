@@ -4,6 +4,7 @@ app.use(express.json());
 
 const adminRouter = require("./routes/admin");
 const userRouter = require("./routes/user");
+const cartRouter = require("./routes/cart");
 
 app.use("/admin", adminRouter);
 app.use("/user", userRouter);
