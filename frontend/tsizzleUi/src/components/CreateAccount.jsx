@@ -1,27 +1,22 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import InputBox from "./InputBox";
 
 export default function CreateAccount(){
 
     const navigate = useNavigate();
     const [isChecked, setIsChecked] = useState(false);
     return(
-        <div className="flex justify-center items-center w-full py-8"> 
+        <div className="flex justify-center items-center w-full py-8 h-screen mt-20"> 
             <div className="max-w-xs mb-14 mt-0 mr-auto text-black mx-auto">
                 <h2 className="m-0 text-lg font-normal tracking-wide px-2">Create your account</h2>
                 <form className="min-h-72 px-2 ">
                     <div className="mt-6 w-full">
-                        <div className="flex h-11 py-0.5 px-2 border border-black">
-                            <label className="top-2 mt-2">E-mail</label>
-                            <input className="h-full outline-0 text-sm font-light ml-2"></input>
-                        </div>
-                        <p className="font-light text-xs text-red-600 px-1">Check your e-mail format (e.g. name@email.com)</p>
+                        <InputBox boxText="Email" bottomText={"Check your e-mail format (e.g. name@email.com)"}/>
+                        {/* <p className="font-light text-xs text-red-600 px-1">Check your e-mail format (e.g. name@email.com)</p> */}
                     </div>
                     <div className="mt-4 w-full">
-                        <div className="border border-black flex h-11 py-0.5 px-2">
-                            <label className="top-2 mt-2">Password</label>
-                            <input className="h-full outline-0 text-sm font-light ml-2"></input>
-                        </div>
+                        <InputBox boxText={'Password'}/>
                         <p className="font-light text-xs text-red-600 px-1">Between 10 and 30 characters, with at least 1 letter and 1 number</p>
                         <p className="font-light text-xs text-red-600 px-1">Use between 10 and 30 characters, with at least 1 letter and 1 number</p>
                     </div>

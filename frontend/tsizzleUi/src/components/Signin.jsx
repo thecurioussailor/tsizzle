@@ -1,26 +1,21 @@
 import { useNavigate } from "react-router-dom"
+import InputBox from "./InputBox";
 
 export default function Signin(){
 
         const navigate = useNavigate();
+    
     return(
         <div className="flex justify-center items-center h-screen">
             <div className="w-96 h-auto p-6">
                 <h2 className="mb-4 text-xl">Sign in</h2>
                 <form>
                     <div className="w-full mt-6">
-                        <div className="border h-11">
-                            <label className="text-sm">E-mail</label>
-                            <input></input>
-                        </div>
-                        <p className="text-xs text-red-600">Complete this field to continue</p>
+                        <InputBox boxText="Email" bottomText="Complete this field to continue"/>
+                        
                     </div>
                     <div className="w-full mt-6">
-                        <div className="border h-11">
-                            <label className="text-sm">Password</label>
-                            <input></input>
-                        </div>
-                     <p className="text-xs text-red-600">Complete this field to continue</p>
+                        <InputBox boxText="Password" bottomText="Complete this field to continue"/>
                     </div>
                     <div className="w-full mt-4">
                         <label>

@@ -7,6 +7,8 @@ const { Product } = require('../db')
 const {JWT_SECRET} = require('../config')
 
 const router = express.Router();
+const mongoose = require('mongoose');
+const ObjectId = mongoose.Types.ObjectId; 
 
 router.post('/signup', async (req, res) => {
     const username = req.body.username;
@@ -16,13 +18,17 @@ router.post('/signup', async (req, res) => {
         username
     })
     if(!findAdmin){
-        await Admin.create({
+        const admin = await Admin.create({
             username: username,
             password: password
         })
-    
+        
+        const token = jwt.sign({
+            username
+        }, JWT_SECRET);
         res.json({
-            msg: "Admin created successfully"
+            msg: "Admin created successfully",
+            token
         })
     } else {
         res.json({
@@ -57,6 +63,18 @@ router.post('/signin', async (req, res) => {
         })
     }
 })
+router.put("/", adminMiddleware, async (req,res) =>{
+
+    const update = await Admin.updateOne({
+        _id: req.userId
+    }, req.body)
+
+    res.json({
+        message: "Updated Succesfully!",
+        update
+    })
+
+})
 
 router.post('/products', adminMiddleware, async (req, res) => {
     const title = req.body.title;
@@ -79,6 +97,16 @@ router.post('/products', adminMiddleware, async (req, res) => {
         message: "Product created successfully",
         ProductId: newProduct._id
     })
+})
+
+router.get("/products",adminMiddleware, async (req,res) =>{
+
+    const products = await Product.find();
+
+    res.json({
+        products
+    })
+    
 })
 
 module.exports = router;

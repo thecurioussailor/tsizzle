@@ -4,7 +4,7 @@ export default function Navbar(){
 
     const navigate = useNavigate();
     return(
-        <div className="fixed top-0 w-full bg-white z-50 shadow-md">
+        <div className="fixed top-0 w-full bg-white z-50 shadow-md mb-8">
             <div className='flex h-16 w-full min-h-16 z-10 justify-between font-medium relative'>
                 <nav>
                     <ul className="flex items-center ml-4 h-full space-x-4 justify-around font-sans text-sm">
