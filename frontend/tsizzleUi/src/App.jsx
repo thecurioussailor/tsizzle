@@ -4,6 +4,9 @@ import Navbar from './components/Navbar'
 import {BrowserRouter, Route, Routes} from 'react-router-dom'
 import Signin from './components/Signin'
 import CreateAccount from './components/CreateAccount'
+import Profile from './pages/Profile'
+import Wishlist from './pages/Wishlist'
+import ShoppingBag from './pages/ShoppingBag'
 
 function App() {
  
@@ -22,8 +25,9 @@ function App() {
 
            <Route path="/signin" element={<Signin/>}></Route>
            <Route path="/createaccount" element={<CreateAccount/>}></Route>
-           <Route path="/wishlist"></Route>
-           <Route path="/shopping-bag"></Route>
+           <Route path="/profile" element={<Profile/>}></Route>
+           <Route path="/wishlist" element={<Wishlist/>}></Route>
+           <Route path="/shopping-bag" element={<ShoppingBag/>}></Route>
         </Routes>
     </BrowserRouter>
       

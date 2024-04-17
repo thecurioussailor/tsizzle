@@ -1,22 +1,41 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import InputBox from "./InputBox";
+import axios from "axios";
 
 export default function CreateAccount(){
 
     const navigate = useNavigate();
     const [isChecked, setIsChecked] = useState(false);
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+
+    const handleSignUp = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post("http://localhost:3000/admin/signup", {
+                username,
+                password,
+            });
+            console.log(response.data);
+            localStorage.setItem('token', response.data.token);
+            navigate("/");
+        } catch (error) {
+            console.log(error);
+            setError("Something went wrong");
+        }
+    };
     return(
         <div className="flex justify-center items-center w-full py-8 h-screen mt-20"> 
             <div className="max-w-xs mb-14 mt-0 mr-auto text-black mx-auto">
                 <h2 className="m-0 text-lg font-normal tracking-wide px-2">Create your account</h2>
-                <form className="min-h-72 px-2 ">
+                <form onSubmit={handleSignUp} className="min-h-72 px-2 ">
                     <div className="mt-6 w-full">
-                        <InputBox boxText="Email" bottomText={"Check your e-mail format (e.g. name@email.com)"}/>
+                        <InputBox onChange={(e) =>{setUsername(e.target.value)}} boxText="Email" bottomText={"Check your e-mail format (e.g. name@email.com)"}/>
                         {/* <p className="font-light text-xs text-red-600 px-1">Check your e-mail format (e.g. name@email.com)</p> */}
                     </div>
                     <div className="mt-4 w-full">
-                        <InputBox boxText={'Password'}/>
+                        <InputBox onChange={(e) => {setPassword(e.target.value)}} boxText={'Password'}/>
                         <p className="font-light text-xs text-red-600 px-1">Between 10 and 30 characters, with at least 1 letter and 1 number</p>
                         <p className="font-light text-xs text-red-600 px-1">Use between 10 and 30 characters, with at least 1 letter and 1 number</p>
                     </div>
@@ -32,7 +51,7 @@ export default function CreateAccount(){
                         </label>
                     </div>
                     <div className="mt-4 text-white">
-                        <button className="flex items-center justify-center h-11 w-full border text-sm font-medium bg-black">
+                        <button type="submit" className="flex items-center justify-center h-11 w-full border text-sm font-medium bg-black">
                             <span>Create account</span>
                         </button>
                     </div>

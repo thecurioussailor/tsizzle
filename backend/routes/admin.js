@@ -14,6 +14,7 @@ router.post('/signup', async (req, res) => {
     const username = req.body.username;
     const password = req.body.password;
 
+    console.log(username,password)
     const findAdmin = await Admin.findOne({
         username
     })
@@ -65,16 +66,20 @@ router.post('/signin', async (req, res) => {
 })
 router.put("/", adminMiddleware, async (req,res) =>{
 
-    const update = await Admin.updateOne({
-        _id: req.userId
+    console.log(req.username);
+    const username = req.username;
+    const userId = await Admin.findOne({
+        username
+    })
+    await Admin.updateOne({
+        _id: userId
     }, req.body)
 
     res.json({
-        message: "Updated Succesfully!",
-        update
+        message: "Updated Succesfully!"
     })
 
-})
+});
 
 router.post('/products', adminMiddleware, async (req, res) => {
     const title = req.body.title;
