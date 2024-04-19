@@ -9,6 +9,7 @@ export default function CreateAccount(){
     const [isChecked, setIsChecked] = useState(false);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [user, setUser] = useState("");
 
     const handleSignUp = async (e) => {
         e.preventDefault();
@@ -18,6 +19,7 @@ export default function CreateAccount(){
                 password,
             });
             console.log(response.data);
+            setUser(response.data);
             localStorage.setItem('token', response.data.token);
             navigate("/");
         } catch (error) {

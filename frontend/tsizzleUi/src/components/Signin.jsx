@@ -9,6 +9,7 @@ export default function Signin(){
         const [username, setUsername] = useState("");
         const [password, setPassword] = useState("");
         const [isChecked, setIsChecked] =useState(false);
+        const [user, setUser] = useState({});
         const handlesSignin = async (e) => {
             e.preventDefault();
             try{
@@ -18,7 +19,8 @@ export default function Signin(){
             });
             console.log(response.data);
            // localStorage.removeItem('token');
-            localStorage.setItem('token', response.data.token)
+            localStorage.setItem('token', response.data.token);
+            localStorage.setItem('username', response.data.username);
           //  isChecked === 'true' ? localStorage.setItem('token', response.data.token) : null;
             navigate("/");
             } catch (error) {

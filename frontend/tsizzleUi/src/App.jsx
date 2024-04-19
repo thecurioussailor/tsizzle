@@ -7,6 +7,7 @@ import CreateAccount from './components/CreateAccount'
 import Profile from './pages/Profile'
 import Wishlist from './pages/Wishlist'
 import ShoppingBag from './pages/ShoppingBag'
+import Footer from './components/Footer'
 
 function App() {
  
@@ -29,6 +30,7 @@ function App() {
            <Route path="/wishlist" element={<Wishlist/>}></Route>
            <Route path="/shopping-bag" element={<ShoppingBag/>}></Route>
         </Routes>
+        <Footer/>
     </BrowserRouter>
       
 
