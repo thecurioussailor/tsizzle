@@ -12,17 +12,15 @@ router.post('/signup', async (req,res) =>{
     const firstName = req.body.firstName;
     const lastName = req.body.lastName;
     const age = req.body.age;
+    const gender = req.body.gender;
+    const phone = req.body.phone;
+    const dob = req.body.dateOfBirth;
+    console.log(dob);
+    const user = await User.create(req.body);
 
-    await User.create({
-        username,
-        password,
-        firstName,
-        lastName,
-        age
-    })
-
-    res.json({
-        message: "User created successfully"
+    res.status(201).json({
+        message: "User created successfully",
+        user
     })
     
 })

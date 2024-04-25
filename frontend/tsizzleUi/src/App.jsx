@@ -8,6 +8,10 @@ import Profile from './pages/Profile'
 import Wishlist from './pages/Wishlist'
 import ShoppingBag from './pages/ShoppingBag'
 import Footer from './components/Footer'
+import Women from './pages/Women'
+import Men from './pages/Men'
+import Teen from './pages/Teen'
+import Kids from './pages/Kids'
 
 function App() {
  
@@ -19,10 +23,10 @@ function App() {
         <Navbar/>
         <Routes>
            <Route path="/" element={<Home/>}></Route>
-           <Route path="/women"></Route>
-           <Route path="/men"></Route>
-           <Route path="/teen"></Route>
-           <Route path="/kids"></Route>
+           <Route path="/women" element={<Women/>}></Route>
+           <Route path="/men" element={<Men/>}></Route>
+           <Route path="/teen" element={<Teen/>} ></Route>
+           <Route path="/kids" element={<Kids/>}></Route>
 
            <Route path="/signin" element={<Signin/>}></Route>
            <Route path="/createaccount" element={<CreateAccount/>}></Route>

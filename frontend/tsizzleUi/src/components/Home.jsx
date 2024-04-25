@@ -3,6 +3,9 @@ import { useNavigate } from "react-router-dom"
 export default function Home(){
 
     const navigate = useNavigate();
+    const handleNavigation = (path) =>{
+        navigate(path);
+    }
     return(
         <div>
             <div>
@@ -14,7 +17,7 @@ export default function Home(){
                         <div className="bottom-14 absolute flex justify-center items-center w-full">
                 
                             <div className="w-32 h-10 mx-1 flex justify-center items-center text-black bg-white hover:opacity-50 hover:cursor-pointer">
-                                <a>Women</a>
+                                <a onClick={() => handleNavigation('/women')}>Women</a>
                              </div>
                         </div>
                     </div>
@@ -27,7 +30,7 @@ export default function Home(){
                         <div className="bottom-14 absolute flex justify-center items-center w-full">
                 
                             <div className="w-32 h-10 mx-1 flex justify-center items-center text-black bg-white hover:opacity-50 hover:cursor-pointer">
-                                <a>Men</a>
+                                <a onClick={() => handleNavigation('/men')}>Men</a>
                              </div>
                         </div>
                     </div>
@@ -39,7 +42,7 @@ export default function Home(){
                         <div className="bottom-14 absolute flex justify-center items-center w-full">
                 
                             <div className="w-32 h-10 mx-1 flex justify-center items-center text-black bg-white hover:opacity-50 hover:cursor-pointer">
-                                <a>Teen</a>
+                                <a onClick={() => handleNavigation('/teen')}>Teen</a>
                              </div>
                         </div>
                     </div>
@@ -50,7 +53,7 @@ export default function Home(){
                         <div className="bottom-14 absolute flex justify-center items-center w-full">
                 
                             <div className="w-32 h-10 mx-1 flex justify-center items-center text-black bg-white hover:opacity-50 hover:cursor-pointer">
-                                <a>Kids</a>
+                                <a onClick={() => handleNavigation('/men')}>Kids</a>
                              </div>
                         </div>
                     </div>

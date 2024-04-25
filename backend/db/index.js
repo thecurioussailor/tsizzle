@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 
+
 // Connect to MongoDB
 mongoose.connect('mongodb+srv://callmetomashu111:qSlTddLCi31XqamJ@cluster1.e3zwhtb.mongodb.net/tsizzledb');
 
@@ -16,7 +17,21 @@ const UserSchema = new mongoose.Schema({
     password: String,
     firstName: String,
     lastName: String,
-    age:  Number
+    age:  Number,
+    gender: String,
+    phone: Number,
+    dateOfBirth: {
+        type: Date,
+        set: function(v) {
+            if (typeof v === 'string') {
+                // Convert string to Date object
+                return new Date(v);
+            }
+            // Set the time to 00:00:00
+            v.setHours(0, 0, 0, 0);
+            return v;
+        }
+    }
 });
 
 const ProductSchema = new mongoose.Schema({
