@@ -9,7 +9,6 @@ export default function Signin(){
         const [username, setUsername] = useState("");
         const [password, setPassword] = useState("");
         const [isChecked, setIsChecked] =useState(false);
-        const [user, setUser] = useState({});
         const handlesSignin = async (e) => {
             e.preventDefault();
             try{

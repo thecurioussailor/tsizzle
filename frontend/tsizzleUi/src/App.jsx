@@ -12,6 +12,10 @@ import Women from './pages/Women'
 import Men from './pages/Men'
 import Teen from './pages/Teen'
 import Kids from './pages/Kids'
+import AdminSignin from './pages/AdminSignin'
+import AdminProductCatelog from './pages/AdminProductCatelog'
+import AdminProductReview from './pages/AdminProductReview'
+import AdminAddItems from './pages/AdminAddItems'
 
 function App() {
  
@@ -27,12 +31,16 @@ function App() {
            <Route path="/men" element={<Men/>}></Route>
            <Route path="/teen" element={<Teen/>} ></Route>
            <Route path="/kids" element={<Kids/>}></Route>
-
            <Route path="/signin" element={<Signin/>}></Route>
            <Route path="/createaccount" element={<CreateAccount/>}></Route>
            <Route path="/profile" element={<Profile/>}></Route>
            <Route path="/wishlist" element={<Wishlist/>}></Route>
            <Route path="/shopping-bag" element={<ShoppingBag/>}></Route>
+           <Route path="/admin" element={<AdminSignin/>} ></Route>
+           <Route path="/admin/productcatelog" element={<AdminProductCatelog/>}></Route>
+           <Route path="/admin/productreview" element={<AdminProductReview/>}></Route>
+           <Route path="/admin/additems" element={<AdminAddItems/>}></Route>
+
         </Routes>
         <Footer/>
     </BrowserRouter>
