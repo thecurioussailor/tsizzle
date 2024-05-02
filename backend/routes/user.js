@@ -1,6 +1,6 @@
 const express = require("express");
 const userMiddleware = require('../middleware/user')
-const { User } = require("../db");
+const { User, Product } = require("../db");
 const jwt = require('jsonwebtoken')
 const router = express.Router();
 const {JWT_SECRET} = require('../config')
@@ -113,6 +113,24 @@ router.put('/update', userMiddleware, async (req, res) =>{
         });
     }
 
+})
+
+router.get('/products', async (req, res) => {
+
+    try{
+        const products = await Product.find({
+            isPublished: true
+        });
+
+        res.json({
+            products
+        })
+    } catch (error) {
+        res.json({
+            message: " Couldn't fetch the products.",
+            error: error
+        })
+    }
 })
 
 

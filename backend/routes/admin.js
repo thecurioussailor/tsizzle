@@ -89,6 +89,8 @@ router.post('/products', adminMiddleware, async (req, res) => {
     const imageLink = req.body.imageLink;
     const color = req.body.color;
     const size = req.body.size;
+    const tag = req.body.tag;
+    const isPublished = req.body.isPublished;
 
     const newProduct = await Product.create({
         title,
@@ -96,7 +98,9 @@ router.post('/products', adminMiddleware, async (req, res) => {
         imageLink,
         price,
         color,
-        size
+        size,
+        tag,
+        isPublished
     })
 
     res.json({

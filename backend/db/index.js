@@ -1,8 +1,11 @@
 const mongoose = require('mongoose');
+const dotenv = require("dotenv");
+dotenv.config();
 
+const dburl = process.env.DB_URL;
 
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://callmetomashu111:qSlTddLCi31XqamJ@cluster1.e3zwhtb.mongodb.net/tsizzledb');
+mongoose.connect(dburl);
 
 // Define schemas
 const AdminSchema = new mongoose.Schema({
@@ -38,11 +41,12 @@ const ProductSchema = new mongoose.Schema({
     // Schema definition here
     title: String,
     description: String,
-    imageLink: String,
+    imageLink: [String],
     price: Number,
     color: String,
     tag: String,
-    size: [String]
+    size: [String],
+    isPublished: Boolean
 });
 
 const CartSchema = new mongoose.Schema({
