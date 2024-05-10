@@ -42,7 +42,7 @@ const ProductSchema = new mongoose.Schema({
     title: String,
     description: String,
     imageLink: [String],
-    price: Number,
+    price: String,
     color: String,
     tag: String,
     size: [String],
