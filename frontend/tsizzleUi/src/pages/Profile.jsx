@@ -18,7 +18,7 @@ export default function Profile (){
 
             try{
 
-                const response = await axios.get("http://localhost:3000/user/profile",{
+                const response = await axios.get("https://tsizzle.onrender.com/user/profile",{
                 headers: {
                     Authorization: "Bearer " + localStorage.getItem('token')
                 }

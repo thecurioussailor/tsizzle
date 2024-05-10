@@ -11,7 +11,7 @@ export default function AdminSignin(){
     const handleSubmit = (e) => {
         e.preventDefault();
         try{
-             axios.post("http://localhost:3000/admin/signin", {
+             axios.post("https://tsizzle.onrender.com/admin/signin", {
                 username,
                 password
              })

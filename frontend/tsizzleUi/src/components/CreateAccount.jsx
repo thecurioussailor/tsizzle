@@ -14,7 +14,7 @@ export default function CreateAccount(){
     const handleSignUp = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:3000/user/signup", {
+            const response = await axios.post("https://tsizzle.onrender.com/user/signup", {
                 username,
                 password,
             });

@@ -12,7 +12,7 @@ export default function AdminProductCatelog() {
     useEffect(()=>{
         const fetchData = async () => {
             try {
-                const response = await axios.get("http://localhost:3000/admin/products", {
+                const response = await axios.get("https://tsizzle.onrender.com/admin/products", {
                     headers: {
                         Authorization: "Bearer " + localStorage.getItem("admintoken")
                     }
@@ -51,8 +51,7 @@ export default function AdminProductCatelog() {
                     <ul className="grid gap-0.5 list-none grid-cols-2 w-full min-w-[1024px] max-w-[2560px]">
                     
                         {products.map((product) => (<li key={product._id} className="w-full">
-                            <ProductCard product={product}/>
-                            <button>Review and Edit</button>
+                            <button onClick={() =>{navigate("/admin/productreview")}}><ProductCard product={product}/></button>
                             </li>))}
                         
                     </ul>
