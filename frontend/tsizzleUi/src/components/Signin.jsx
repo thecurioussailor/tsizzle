@@ -31,16 +31,16 @@ export default function Signin(){
             <div className="w-96 h-auto p-6">
                 <h2 className="mb-4 text-xl">Sign in</h2>
                 <form onSubmit={handlesSignin}>
-                    <div className="w-full mt-6">
+                    <div className="w-full mt-6 mb-6">
                         <InputBox onChange={(e) =>{
                             setUsername(e.target.value)
-                        }} boxText="Email" bottomText="Complete this field to continue"/>
+                        }} boxText="Email" inputValue={username} bottomText="Complete this field to continue"/>
                         
                     </div>
-                    <div className="w-full mt-6">
+                    <div className="w-full mt-6 mb-6">
                         <InputBox onChange={(e) =>{
                             setPassword(e.target.value)
-                        }} boxText="Password" bottomText="Complete this field to continue"/>
+                        }} boxText="Password" inputValue={password} bottomText="Complete this field to continue"/>
                     </div>
                     <div className="w-full mt-4">
                         <label>

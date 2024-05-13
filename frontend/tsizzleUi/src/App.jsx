@@ -16,6 +16,7 @@ import AdminSignin from './pages/AdminSignin'
 import AdminProductCatelog from './pages/AdminProductCatelog'
 import AdminProductReview from './pages/AdminProductReview'
 import AdminAddItems from './pages/AdminAddItems'
+import UserProductDetails from './pages/UserProductDetails'
 
 function App() {
  
@@ -40,6 +41,7 @@ function App() {
            <Route path="/admin/productcatelog" element={<AdminProductCatelog/>}></Route>
            <Route path="/admin/productreview" element={<AdminProductReview/>}></Route>
            <Route path="/admin/additems" element={<AdminAddItems/>}></Route>
+           <Route path="/product" element={<UserProductDetails/>}></Route>
 
         </Routes>
         <Footer/>

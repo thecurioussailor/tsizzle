@@ -10,7 +10,7 @@ export default function Footer() {
                         <div className="w-full h-auto mx-auto">
                             <p className="mx-auto text-center text-sm font-medium leading-4">Receive exclusive promotions, private sales and news</p>
                             <form className="flex flex-col max-w-80 mx-auto">
-                                <div className="flex">
+                                <div className="flex w-full">
                                     
                                     <InputBox boxText={'Enter your e-mail'} bottomText={'Check the format of your e-mail address (e.g. yourname@example.com)'}></InputBox>
                                 </div>

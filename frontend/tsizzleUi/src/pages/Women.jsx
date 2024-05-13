@@ -4,11 +4,12 @@ import SectionBanner from "../components/SectionBanner";
 import axios from "axios";
 import SectionHeading from "../components/SectionHeading";
 import PageTop from "../components/PageTop";
+import { useNavigate } from "react-router-dom";
 
 export default function Women () {
 
     const [products, setProducts] = useState([]);
-
+    const navigate = useNavigate();
     useEffect(()=>{
         const fetchData = async () => {
             try {
@@ -27,7 +28,10 @@ export default function Women () {
         fetchData();
     },[])
     
-
+    const handleClick = (productId) => {
+        // console.log("Product to pass:", product); // Check if product exists
+        navigate(`/product?id=${encodeURIComponent(productId)}`);
+      };
 
     return(
         <div>
@@ -37,7 +41,7 @@ export default function Women () {
                 <ul className="grid gap-0.5 list-none grid-cols-4 w-full min-w-[1024px] max-w-[2560px]">
                     
                     {products.filter((product) => product.tag === 'women').map((product) => (<li key={product._id} className="w-full">
-                        <ProductCard product={product}/>
+                        <button onClick={()=>handleClick(product._id)}><ProductCard product={product}/></button>
                         </li>))}
 
                 </ul>
