@@ -133,6 +133,26 @@ router.get('/products', async (req, res) => {
     }
 })
 
+router.get("/product", async (req,res) =>{
+    const productId = req.query.productId;
+    console.log(productId)
+
+    try{
+        const product = await Product.findById(productId);
+        if(!product){
+            return res.status(404).json({
+                message: "Product not found."
+            });
+        }
+        res.json({product});
+    } catch (error) {
+        res.status(500).json({
+            message: "Couldn't fetch the product.",
+            error:error
+        });
+    }
+})
+
 
 
 module.exports = router;

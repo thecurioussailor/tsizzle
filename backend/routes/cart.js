@@ -62,5 +62,18 @@ router.post('/add', userMiddleware, cartMiddleware, async (req, res) => {
         return res.status(500).json({ message: 'Internal Server Error' });
     }
 });
+router.get("/", userMiddleware, cartMiddleware, async (req, res) =>{
+    try{
+        const username = req.username;
+        const cart = req.cart;
+        const populateCart = await Cart.findById(cart._id).populate('items.product');
+
+        res.status(200).json(populateCart);
+
+    } catch (error) {
+        console.log("error ", error);
+        return res.status(500).json({message: "Internal server error"})
+    }
+})
 
 module.exports = router;
