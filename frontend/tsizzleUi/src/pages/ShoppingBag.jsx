@@ -18,7 +18,7 @@ export default function ShoppingBag () {
                     Authorization: "Bearer " + localStorage.getItem("token")
                 }
             })
-                console.log(response.data.items[1].product._id)
+                console.log(response.data.items);
                 setItems(response.data.items)
            
             } catch(error){
