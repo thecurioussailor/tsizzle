@@ -6,6 +6,7 @@ const cartMiddleware = require('../middleware/cart');
 
 router.post('/add', userMiddleware, cartMiddleware, async (req, res) => {
     try {
+        console.log("add to cart get called!")
         const username = req.username;
         const { productId, quantity, size, color } = req.body;
 
@@ -64,6 +65,7 @@ router.post('/add', userMiddleware, cartMiddleware, async (req, res) => {
 });
 router.get("/", userMiddleware, cartMiddleware, async (req, res) =>{
     try{
+        
         const username = req.username;
         const cart = req.cart;
         const populateCart = await Cart.findById(cart._id).populate('items.product');
