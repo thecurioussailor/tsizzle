@@ -4,7 +4,7 @@ export default function ProductCard ({product}) {
     // const [imageUrl, setImageUrl] = useState('https://images.pexels.com/photos/1188748/pexels-photo-1188748.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
     
     return(
-        <div className="relative h-[660.93] w-[379.8] isolate">
+        <div className="relative h-[660.93] w-[379.8] isolate cursor-pointer">
             <div>
                 <div className={`h-[530.92px] w-[379.8px] border bg-cover bg-center`} style={{backgroundImage: `url(${product.imageLink[0]})`}}>
                     
