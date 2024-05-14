@@ -42,7 +42,7 @@ export default function Men () {
                 <ul className="grid gap-0.5 list-none grid-cols-4 w-full min-w-[1024px] max-w-[2560px]">
                     
                     {products.filter((product) => product.tag === 'men').map((product) => (<li key={product._id} className="w-full">
-                    <button onClick={()=>handleClick(product._id)}><ProductCard product={product}/></button>
+                    <a onClick={()=>handleClick(product._id)}><ProductCard product={product}/></a>
                         </li>))}
 
                 </ul>

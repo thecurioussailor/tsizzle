@@ -1,8 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom";
 
 export default function Profile (){
 
+    const navigate = useNavigate();
 
     const [firstName, setFirstName] = useState("");
     const [lastName, setLasttName] = useState("");
@@ -38,6 +40,11 @@ export default function Profile (){
         fetchProfile();
         
     }, [])
+    function logoutHandler(e){
+        e.preventDefault();
+        localStorage.clear();
+        navigate("/");
+    }
     return(
         <div className="mt-16">
         
@@ -86,6 +93,10 @@ export default function Profile (){
 
                     </div>
                 </div>
+                <div className="flex justify-center ">
+                    <button onClick={logoutHandler} className="bg-black text-white px-3 py-2 text-xs">Logout</button>
+                </div>
+                
             </div>
         </div>
     )
