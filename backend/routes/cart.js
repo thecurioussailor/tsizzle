@@ -107,10 +107,10 @@ router.post("/create-checkout-session", userMiddleware, async (req, res) => {
         cancel_url:"http://localhost:5173/cancel"
     });
 
-    res.redirect(303, session.url);
-    // res.json({
-    //     id:session.id
-    // })
+    // res.redirect(303, session.url);
+    res.json({
+        id:session.id
+    })
 })
 
 module.exports = router;
