@@ -4,9 +4,14 @@ const app = express();
 
 const dotenv = require("dotenv");
 dotenv.config();
-
+app.use(express.static('public'));
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: 'http://localhost:5173',
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true,
+    optionsSuccessStatus: 204
+}));
 
 const adminRouter = require("./routes/admin");
 const userRouter = require("./routes/user");

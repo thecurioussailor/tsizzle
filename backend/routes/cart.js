@@ -3,6 +3,9 @@ const router = express.Router();
 const { User, Product, Cart } = require('../db/index');
 const userMiddleware = require('../middleware/user');
 const cartMiddleware = require('../middleware/cart');
+const dotenv = require("dotenv");
+dotenv.config();
+const stripe = require("stripe")(process.env.STRIPE_SECRET)
 
 router.post('/add', userMiddleware, cartMiddleware, async (req, res) => {
     try {
@@ -76,6 +79,35 @@ router.get("/", userMiddleware, cartMiddleware, async (req, res) =>{
         console.log("error ", error);
         return res.status(500).json({message: "Internal server error"})
     }
+})
+
+router.post("/create-checkout-session", userMiddleware, async (req, res) => {
+    const products = req.body.products;
+    console.log(req.body);
+    console.log(products);
+    const lineItems = products.map((item) => ({
+        price_data: {
+            currency:"inr",
+            product_data:{
+                name: item.product.title,
+                images: [item.product.imageLink[0]]
+            },
+            unit_amount: Math.round(item.price)*100,
+        },
+        quantity: item.quantity
+    }))
+    const session = await stripe.checkout.sessions.create({
+        payment_method_types:["card"],
+        line_items: lineItems,
+        mode: "payment",
+        success_url:"http://localhost:5173/success",
+        cancel_url:"http://localhost:5173/cancel"
+    });
+
+    // res.redirect(303, session.url);
+    res.json({
+        id:session.id
+    })
 })
 
 module.exports = router;
