@@ -98,21 +98,10 @@ router.post("/create-checkout-session", userMiddleware, async (req, res) => {
         quantity: item.quantity
     }))
 
-    const customer = await stripe.customers.create({
-        name: 'Jenny Rosen',
-        address: {
-          line1: '510 Townsend St',
-          postal_code: '98140',
-          city: 'San Francisco',
-          state: 'CA',
-          country: 'US',
-        },
-    });
 
     const session = await stripe.checkout.sessions.create({
         payment_method_types:["card"],
         line_items: lineItems,
-        customer: customer,
         mode: "payment",
         success_url:"http://localhost:5173/success",
         cancel_url:"http://localhost:5173/cancel"
