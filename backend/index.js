@@ -7,7 +7,7 @@ dotenv.config();
 app.use(express.static('public'));
 app.use(express.json());
 app.use(cors({
-    origin: 'http://tsizzle.vercel.app',
+    origin: 'https://tsizzle.vercel.app',
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true,
     optionsSuccessStatus: 204

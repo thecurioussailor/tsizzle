@@ -103,8 +103,8 @@ router.post("/create-checkout-session", userMiddleware, async (req, res) => {
         payment_method_types:["card"],
         line_items: lineItems,
         mode: "payment",
-        success_url:"http://tsizzle.vercel.app/success",
-        cancel_url:"http://tsizzle.vercel.app/cancel"
+        success_url:"https://tsizzle.vercel.app/success",
+        cancel_url:"https://tsizzle.vercel.app/cancel"
     });
 
     // res.redirect(303, session.url);
